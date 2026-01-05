@@ -1,0 +1,85 @@
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  margin: 0;
+  background: #f5f7fb;
+  color: #222;
+}
+
+.site-header {
+  background: #1f3c88;
+  color: #fff;
+  padding: 16px 0;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.site-header nav {
+  margin-top: 8px;
+}
+
+.site-header a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 16px;
+  font-weight: 600;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.card {
+  background: #fff;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #eceff5;
+}
+
+label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccd4e0;
+  border-radius: 4px;
+  margin-top: 6px;
+}
+
+button {
+  background: #1f3c88;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.flash-list {
+  list-style: none;
+  padding: 12px;
+  background: #e3f2fd;
+  border-radius: 6px;
+  margin: 16px 0;
+}

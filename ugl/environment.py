@@ -16,10 +16,10 @@ class Environment:
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "Environment":
         return cls(
-            name=str(data.get("Name", "")),
-            path=str(data.get("Path", "")),
-            admin=data.get("Admin"),
-            color=data.get("Color"),
+            name=str(data.get("Name") or data.get("name") or ""),
+            path=str(data.get("Path") or data.get("path") or ""),
+            admin=data.get("Admin") or data.get("admin"),
+            color=data.get("Color") or data.get("color"),
         )
 
 
