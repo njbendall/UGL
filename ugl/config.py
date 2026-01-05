@@ -14,10 +14,11 @@ class LauncherConfig:
     clients_root: Path
 
     @classmethod
-    def default(cls) -> "LauncherConfig":
-        config_root = Path("C:/EDUIT/GAM_Configs")
+    def default(cls, base_dir: Path | None = None) -> "LauncherConfig":
+        root = base_dir or Path.cwd()
+        config_root = root / "data"
         json_path = config_root / "GAM_Clients.json"
-        log_root = Path("C:/EDUIT/Logs/PowerShell")
+        log_root = root / "logs"
         template_path = config_root / "GAM-Template"
         json_backup_root = config_root / "GAM-JSONBackups"
         clients_root = config_root / "GAM-Clients"
