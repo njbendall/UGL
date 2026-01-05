@@ -13,11 +13,13 @@ class TranscriptLogger:
     _file_handler: logging.FileHandler | None = None
 
     @classmethod
-    def create(cls, log_root: Path) -> "TranscriptLogger":
+    def create(cls, log_root: Path, *, enable_console: bool = True) -> "TranscriptLogger":
         logger = logging.getLogger("ugl")
         logger.setLevel(logging.INFO)
         logger.propagate = False
-        if not any(isinstance(handler, logging.StreamHandler) for handler in logger.handlers):
+        if enable_console and not any(
+            isinstance(handler, logging.StreamHandler) for handler in logger.handlers
+        ):
             console_handler = logging.StreamHandler()
             console_handler.setFormatter(logging.Formatter("%(message)s"))
             logger.addHandler(console_handler)

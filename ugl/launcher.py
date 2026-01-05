@@ -398,7 +398,7 @@ def run_launcher() -> None:
     if script_dir and script_dir.exists():
         os.chdir(script_dir)
 
-    config = LauncherConfig.default()
+    config = LauncherConfig.default(base_dir=Path.cwd())
 
     ensure_directories(config.config_root, config.log_root, config.json_backup_root)
     ensure_json_exists(config.json_path)

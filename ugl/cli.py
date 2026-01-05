@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-from .launcher import run_launcher
+from .ui import run_ui
 
 
 def main() -> None:
-    run_launcher()
+    run_ui()
 
 
 if __name__ == "__main__":
