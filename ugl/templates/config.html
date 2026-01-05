@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="card">
+    <h2>Configuration</h2>
+    <p>Overrides file: {{ override_path }}</p>
+    <form method="post" action="{{ url_for('update_config') }}">
+      <label>
+        Template Path
+        <input name="template_path" value="{{ config.template_path }}" />
+      </label>
+      <label>
+        Clients Root
+        <input name="clients_root" value="{{ config.clients_root }}" />
+      </label>
+      <label>
+        Log Root
+        <input name="log_root" value="{{ config.log_root }}" />
+      </label>
+      <button type="submit">Save Configuration</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Paths</h2>
+    <ul>
+      <li>JSON Path: {{ config.json_path }}</li>
+      <li>JSON Backup Root: {{ config.json_backup_root }}</li>
+      <li>Config Root: {{ config.config_root }}</li>
+    </ul>
+  </section>
+{% endblock %}

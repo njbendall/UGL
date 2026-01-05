@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="card">
+    <h2>Configured Environments</h2>
+    {% if environments %}
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Path</th>
+            <th>Admin</th>
+            <th>Color</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for env in environments %}
+            <tr>
+              <td>{{ env.name }}</td>
+              <td>{{ env.path }}</td>
+              <td>{{ env.admin or "-" }}</td>
+              <td>{{ env.color or "-" }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No environments configured.</p>
+    {% endif %}
+  </section>
+
+  <section class="card">
+    <h2>Launch Command</h2>
+    <form method="post" action="{{ url_for('launch') }}">
+      <label>
+        Environment
+        <input name="environment" list="environment-list" placeholder="Environment name" />
+      </label>
+      <datalist id="environment-list">
+        {% for env in environments %}
+          <option value="{{ env.name }}"></option>
+        {% endfor %}
+      </datalist>
+      <label>
+        Command
+        <input name="command" placeholder="gam info user..." />
+      </label>
+      <button type="submit">Launch</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Recent Launch Tasks</h2>
+    {% if tasks %}
+      <table>
+        <thead>
+          <tr>
+            <th>Environment</th>
+            <th>Command</th>
+            <th>Status</th>
+            <th>Latest Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for task in tasks %}
+            <tr>
+              <td>{{ task.environment }}</td>
+              <td>{{ task.command }}</td>
+              <td>{{ task.status }}</td>
+              <td>{{ task.output[-1] if task.output else task.error or "-" }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No launch tasks yet.</p>
+    {% endif %}
+  </section>
+{% endblock %}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Universal GAM Launcher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1>Universal GAM Launcher</h1>
+        <nav>
+          <a href="{{ url_for('index') }}">Dashboard</a>
+          <a href="{{ url_for('config') }}">Configuration</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class="flash-list">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

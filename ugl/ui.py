@@ -21,7 +21,7 @@ from .filesystem import (
     safe_folder_key,
 )
 from .json_store import ensure_json_exists, load_json, save_json, set_environments
-from .launcher import GAM_COMMANDS, _script_directory, _select_template_source, _run_subprocess
+from .services import GAM_COMMANDS, run_subprocess, script_directory, select_template_source
 from .logging_utils import TranscriptLogger
 
 
@@ -181,7 +181,7 @@ class LauncherUI:
         self.logger.info(f"Auto-generated folder: {path}")
         self.logger.info(f"Using template: {self.config.template_path}")
 
-        template_source = _select_template_source(self.config.template_path)
+        template_source = select_template_source(self.config.template_path)
         if template_source:
             self.logger.info(f"Cloning template from: {template_source}")
             try:
@@ -365,7 +365,7 @@ class LauncherUI:
                     return
             if self.active_gam_exe and self.active_gam_exe.exists():
                 self._run_in_thread(
-                    _run_subprocess,
+                    run_subprocess,
                     [str(self.active_gam_exe)] + args,
                     session_env,
                     self.active_path,
@@ -402,7 +402,7 @@ class LauncherUI:
 
 
 def run_ui() -> None:
-    script_dir = _script_directory()
+    script_dir = script_directory()
     if script_dir and script_dir.exists():
         os.chdir(script_dir)
 
